@@ -1,0 +1,70 @@
+﻿<Window x:Class="wpf_charts_demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+        xmlns:local="clr-namespace:wpf_charts_demo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!--<dxc:ChartControl DataSource="{Binding Data, Mode=OneWay}">
+            <dxc:ChartControl.Diagram>
+                <dxc:XYDiagram2D EnableAxisXNavigation="True" EnableAxisYNavigation="True">
+
+                    <dxc:XYDiagram2D.NavigationOptions>
+                        <dxc:NavigationOptions 
+                            UseScrollBars="True"
+                            UseMouse="True"
+                            UseTouchDevice="True"/>
+                    </dxc:XYDiagram2D.NavigationOptions>
+                    
+                </dxc:XYDiagram2D>
+            </dxc:ChartControl.Diagram>
+            <dxc:ChartControl.Legend>
+                <dxc:Legend />
+            </dxc:ChartControl.Legend>
+        </dxc:ChartControl>-->
+
+        <dxc:ChartControl Name="chartControl1">
+            <dxc:ChartControl.Diagram>
+
+                <dxc:XYDiagram2D SeriesItemsSource="{Binding Data}" EnableAxisXNavigation="True">
+
+                    <dxc:XYDiagram2D.NavigationOptions>
+                        <dxc:NavigationOptions UseMouse="True" UseTouchDevice="True" />
+                    </dxc:XYDiagram2D.NavigationOptions>
+
+                    <dxc:XYDiagram2D.SeriesItemTemplate>
+                        <DataTemplate>
+                            <dxc:LineSeries2D DisplayName="{Binding Name}" 
+                                               DataSource="{Binding Values}"
+                                               ArgumentDataMember="Argument"
+                                               ValueDataMember="Value" 
+>
+                                <!--<dxc:BarSideBySideSeries2D.Model>
+                                    <dxc:BorderlessSimpleBar2DModel/>
+                                </dxc:BarSideBySideSeries2D.Model>-->
+                            </dxc:LineSeries2D>
+                        </DataTemplate>
+                    </dxc:XYDiagram2D.SeriesItemTemplate>
+                    <dxc:XYDiagram2D.AxisX>
+                        <dxc:AxisX2D>
+                            <dxc:AxisX2D.DateTimeScaleOptions>
+                                <dxc:ManualDateTimeScaleOptions MeasureUnit="Second" GridAlignment="Minute"
+                                                                GridSpacing="60" />
+                            </dxc:AxisX2D.DateTimeScaleOptions>
+                            <dxc:AxisX2D.VisualRange>
+                                <dxc:Range />
+                            </dxc:AxisX2D.VisualRange>
+                        </dxc:AxisX2D>
+                    </dxc:XYDiagram2D.AxisX>
+                </dxc:XYDiagram2D>
+
+            </dxc:ChartControl.Diagram>
+            <dxc:ChartControl.Legends>
+                <dxc:Legend HorizontalPosition="Right"/>
+            </dxc:ChartControl.Legends>
+        </dxc:ChartControl>
+    </Grid>
+</Window>
